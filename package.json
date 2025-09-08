@@ -12,12 +12,23 @@
     "axios": "^1.11.0",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
+    "vite-plugin-vue-devtools": "^7.6.5",
     "@arco-design/web-vue": "^2.57.0",
+    "@types/node": "^24.3.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.4.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.13",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
     "vue-tsc": "^3.0.5"
