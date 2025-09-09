@@ -3,8 +3,9 @@ import { menus } from './menus'
 
 export const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '',
     name: 'home',
+    redirect: '/home',
     component: () => import('@/layouts/index.vue'),
     children: [...menus],
   },

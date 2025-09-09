@@ -3,17 +3,17 @@ import type { RouteRecordRaw } from 'vue-router'
 export const menus: Array<RouteRecordRaw> = [
   {
     name: 'Home',
-    path: '/aaa',
+    path: '/home',
     component: () => import('@/views/home/Home.vue'),
   },
   {
     name: 'About',
-    path: '/bbb',
+    path: '/about',
     component: () => import('@/views/home/Home.vue'),
   },
   {
     name: 'Contact',
-    path: '/ccc',
+    path: '/contact',
     component: () => import('@/views/home/Home.vue'),
   },
 ]
