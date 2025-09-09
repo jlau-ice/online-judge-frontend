@@ -1,6 +1,6 @@
 <template>
   <div class="p-[20px]">
-    HOME
+    OTHER
   </div>
 </template>
 

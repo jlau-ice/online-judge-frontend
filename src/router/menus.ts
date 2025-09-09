@@ -9,11 +9,11 @@ export const menus: Array<RouteRecordRaw> = [
   {
     name: 'About',
     path: '/about',
-    component: () => import('@/views/home/Home.vue'),
+    component: () => import('@/views/about/About.vue'),
   },
   {
     name: 'Contact',
     path: '/contact',
-    component: () => import('@/views/home/Home.vue'),
+    component: () => import('@/views/other/Other.vue'),
   },
 ]
