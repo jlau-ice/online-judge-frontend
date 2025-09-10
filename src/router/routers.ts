@@ -14,4 +14,9 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/noAccess',
     component: () => import('@/views/result/PermissionDenied.vue'),
   },
+  {
+    name: 'notFound',
+    path: '/:pathMatch(.*)*', // 这就是通配符路由
+    component: () => import('@/views/result/404.vue'),
+  },
 ]

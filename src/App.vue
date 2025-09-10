@@ -12,7 +12,7 @@ setTimeout(() => {
 }, 5000)
 
 setTimeout(() => {
-  userStore.changeName("测试")
+  userStore.changeName('测试')
 }, 10000)
 
 </script>
