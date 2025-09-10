@@ -9,4 +9,9 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('@/layouts/index.vue'),
     children: [...menus],
   },
+  {
+    name: 'noAccess',
+    path: '/noAccess',
+    component: () => import('@/views/result/PermissionDenied.vue'),
+  },
 ]
