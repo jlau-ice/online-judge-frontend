@@ -19,4 +19,9 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/:pathMatch(.*)*', // 这就是通配符路由
     component: () => import('@/views/result/404.vue'),
   },
+  {
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/login/Login.vue'),
+  },
 ]
