@@ -11,10 +11,10 @@
           <a-input placeholder="请输入账号" allow-clear />
           <a-input-password v-model:visibility="visibility" placeholder="请输入密码" :defaultVisibility="false" allow-clear />
           <div class="text-[#bbb] text-right">
-            没有账号？
-            <span class="cursor-pointer hover:text-[#1677ff]" @click="handelRegister">去注册</span>
+            有账号？
+            <span class="cursor-pointer hover:text-[#1677ff]" @click="handelRegister">去登录</span>
           </div>
-          <a-button type="primary" class="w-full" @click="handleLogin">登录</a-button>
+          <a-button type="primary" class="w-full" @click="handleLogin">立即注册</a-button>
         </a-space>
       </div>
     </div>
@@ -38,7 +38,7 @@ const handleLogin = () => {
   console.log('登录中...', form)
 }
 const handelRegister = () => {
-  router.push({ path: '/register' })
+  router.push({ path: '/login' })
 }
 </script>
 
