@@ -1,4 +1,4 @@
-import ACCESS_ENUM from '@/access/accessEnum'
+import { ACCESS_ENUM } from '@/access/accessEnum'
 import type { RouteRecordRaw } from 'vue-router'
 
 export const menus: Array<RouteRecordRaw> = [
@@ -16,7 +16,6 @@ export const menus: Array<RouteRecordRaw> = [
     name: 'users',
     path: '/users',
     component: () => import('@/views/other/Other.vue'),
-    meta: { requiresAuth: [ACCESS_ENUM.ADMIN] },
+    meta: { access: ACCESS_ENUM.ADMIN },
   },
-  
 ]

@@ -11,7 +11,7 @@
         </a-menu-item>
       </a-menu>
       <div class="mr-[24px]">
-        {{ userStore.userInfo.name }}
+        {{ userStore?.loginUser?.userName }}
       </div>
     </div>
   </div>
@@ -32,10 +32,7 @@ const menuItemClick = (e: string) => {
 
 const filterMenu = computed(() => {
   return menus.filter((item) => {
-    if (!checkAccess(userStore.userInfo, item?.meta?.requiresAuth as Array<string>)) {
-      return false
-    }
-    return true
+    return checkAccess(userStore.userInfo, item?.meta?.access as string);
   })
 })
 

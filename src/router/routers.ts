@@ -16,7 +16,7 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     name: 'notFound',
-    path: '/:pathMatch(.*)*', // 这就是通配符路由
+    path: '/:pathMatch(.*)*',
     component: () => import('@/views/result/404.vue'),
   },
   {

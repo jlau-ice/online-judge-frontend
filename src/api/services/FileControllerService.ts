@@ -2,9 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BaseResponse_string_ } from '../models/BaseResponse_string_';
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
+import type { BaseResponse_string_,CancelablePromise} from '@/api';
+import { OpenAPI } from '@/api';
 import { request as __request } from '../core/request';
 export class FileControllerService {
     /**
@@ -21,7 +20,7 @@ export class FileControllerService {
     ): CancelablePromise<BaseResponse_string_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/file/upload',
+            url: '/file/upload',
             query: {
                 'biz': biz,
             },
