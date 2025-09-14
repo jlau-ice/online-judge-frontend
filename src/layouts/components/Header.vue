@@ -1,5 +1,5 @@
 <template>
-  <div class="max-h-[68px] shadow overflow-hidden">
+  <div class="h-[58px] shadow overflow-hidden">
     <div class="flex items-center">
       <div class="flex items-center gap-[10px] ml-[24px] w-[110px] cursor-pointer select-none">
         <img width="40px" src="@/assets/leetcode.svg" alt="logo" />
@@ -32,7 +32,7 @@ const menuItemClick = (e: string) => {
 
 const filterMenu = computed(() => {
   return menus.filter((item) => {
-    return checkAccess(userStore.userInfo, item?.meta?.access as string);
+    return checkAccess(userStore.loginUser, item?.meta?.access as string);
   })
 })
 

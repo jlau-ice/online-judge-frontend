@@ -60,7 +60,7 @@ const handleRegister = async () => {
   try {
     await formRef.value?.validate()
     UserControllerService.userRegisterUsingPost(form).then((res) => {
-      if (res.code === 0) {
+      if (res.code === 200) {
         message.success("注册成功")
       }else {
         message.error(res.message)

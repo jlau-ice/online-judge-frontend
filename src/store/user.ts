@@ -9,9 +9,21 @@ export const useUserStore = defineStore('user', () => {
         userRole: ACCESS_ENUM.NO_LOGIN
     })
     async function fetchLoginUser() {
-        const res = await UserControllerService.getLoginUserUsingGet();
-        if (res.code === 200) {
-            loginUser.value = responseLoginUserVO.data
+        try {
+            const res = await UserControllerService.getLoginUserUsingGet();
+            if (res.code === 200) {
+                loginUser.value = res.data
+            } else {
+                loginUser.value = {
+                    userName: '未登录',
+                    userRole: ACCESS_ENUM.NO_LOGIN
+                }
+            }
+        } catch (error) {
+            loginUser.value = {
+                userName: '未登录',
+                userRole: ACCESS_ENUM.NO_LOGIN
+            }
         }
     }
     return {loginUser, fetchLoginUser}

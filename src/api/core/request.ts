@@ -1,17 +1,17 @@
 /* generated using openapi-typescript-codegen -- do not edit */
+import type {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import axios from 'axios';
-import type { AxiosError, AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios';
 import FormData from 'form-data';
 
-import { ApiError } from '@/api';
-import type { ApiRequestOptions } from './ApiRequestOptions';
-import type { ApiResult } from './ApiResult';
-import { CancelablePromise } from '@/api';
-import type { OnCancel } from './CancelablePromise';
-import type { OpenAPIConfig } from '@/api';
+import type {OpenAPIConfig} from '@/api';
+import {ApiError, CancelablePromise} from '@/api';
+import type {ApiRequestOptions} from './ApiRequestOptions';
+import type {ApiResult} from './ApiResult';
+import type {OnCancel} from './CancelablePromise';
+import {axiosInstance} from './axiosInstance';
 
 export const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null;
@@ -291,7 +291,7 @@ export const catchErrorCodes = (options: ApiRequestOptions, result: ApiResult): 
  * @returns CancelablePromise<T>
  * @throws ApiError
  */
-export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions, axiosClient: AxiosInstance = axios): CancelablePromise<T> => {
+export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions, axiosClient: AxiosInstance = axiosInstance): CancelablePromise<T> => {
     return new CancelablePromise(async (resolve, reject, onCancel) => {
         try {
             const url = getUrl(config, options);

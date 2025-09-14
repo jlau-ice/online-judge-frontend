@@ -55,7 +55,7 @@ const handleLogin = async () => {
   try {
     await formRef.value?.validate()
     const res = await UserControllerService.userLoginUsingPost(form)
-    if (res.code === 0) {
+    if (res.code === 200) {
       message.success("登录成功")
       await userStore.fetchLoginUser()
       await router.push({path: "/home"})
