@@ -7,7 +7,7 @@
           <span class="text-[33px] font-semibold font-family-alibaba">Online Judge</span>
         </div>
         <span class="text-[#515258] tracking-wider font-family-alibaba">开源的OJ判题系统</span>
-        <a-form :model="form" :rules="rules" layout="vertical" ref="formRef" class="mt-[20px]">
+        <a-form :model="form" :rules="rules" layout="vertical" ref="formRef" class="mt-[20px]" @submit="handleLogin">
           <a-form-item hide-label field="userAccount">
             <a-input v-model="form.userAccount" placeholder="请输入账号" allow-clear />
           </a-form-item>
@@ -16,10 +16,10 @@
           </a-form-item>
           <div class="text-[#bbb] text-right mb-[10px]">
             没有账号？
-            <span class="cursor-pointer hover:text-[#1677ff]" @click="handelRegister"> 去注册 </span>
+            <span class="cursor-pointer hover:text-[#1677ff]" @click="toRegister"> 去注册 </span>
           </div>
           <a-form-item hide-label>
-            <a-button type="primary" class="w-full" @click="handleLogin"> 登录 </a-button>
+            <a-button html-type="submit" type="primary" class="w-full"> 登录 </a-button>
           </a-form-item>
         </a-form>
       </div>
@@ -34,8 +34,8 @@ import { reactive, ref } from 'vue'
 import type { UserLoginRequest } from '@/api'
 import { UserControllerService } from '@/api'
 import type { FormInstance } from '@arco-design/web-vue'
-import message from "@arco-design/web-vue/es/message";
-import {useUserStore} from "@/store/user";
+import message from '@arco-design/web-vue/es/message'
+import { useUserStore } from '@/store/user'
 const userStore = useUserStore()
 
 const form = reactive<UserLoginRequest>({
@@ -53,12 +53,13 @@ const formRef = ref<FormInstance>()
 const visibility = ref(true)
 const handleLogin = async () => {
   try {
-    await formRef.value?.validate()
+    const isValid = await formRef.value.validate()
+    if (isValid) return
     const res = await UserControllerService.userLoginUsingPost(form)
     if (res.code === 200) {
-      message.success("登录成功")
+      message.success('登录成功')
       await userStore.fetchLoginUser()
-      await router.push({path: "/home"})
+      await router.push({ path: '/home' })
     } else {
       message.error(res.message)
     }
@@ -67,7 +68,7 @@ const handleLogin = async () => {
   }
   console.log('登录中...', form)
 }
-const handelRegister = () => {
+const toRegister = () => {
   router.push({ path: '/register' })
 }
 </script>

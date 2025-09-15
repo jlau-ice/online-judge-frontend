@@ -7,7 +7,7 @@
           <span class="text-[33px] font-semibold font-family-alibaba">Online Judge</span>
         </div>
         <span class="text-[#515258] tracking-wider font-family-alibaba">开源的OJ判题系统</span>
-        <a-form :model="form" :rules="rules" layout="vertical" class="mt-[20px]" ref="formRef">
+        <a-form :model="form" :rules="rules" layout="vertical" class="mt-[20px]" ref="formRef"  @submit="handleRegister">
           <a-form-item hide-label field="userAccount">
             <a-input v-model="form.userAccount" placeholder="请输入账号" allow-clear />
           </a-form-item>
@@ -19,10 +19,10 @@
           </a-form-item>
           <div class="text-[#bbb] text-right mb-[10px]">
             有账号？
-            <span class="cursor-pointer hover:text-[#1677ff]" @click="handelRegister">去登录</span>
+            <span class="cursor-pointer hover:text-[#1677ff]" @click="toLogin">去登录</span>
           </div>
           <a-form-item hide-label>
-            <a-button type="primary" class="w-full" @click="handleRegister"> 立即注册 </a-button>
+            <a-button html-type="submit" type="primary" class="w-full"> 立即注册 </a-button>
           </a-form-item>
         </a-form>
       </div>
@@ -58,10 +58,12 @@ const rules = {
 }
 const handleRegister = async () => {
   try {
-    await formRef.value?.validate()
+    const isValid = await formRef.value.validate()
+    if (isValid) return
     UserControllerService.userRegisterUsingPost(form).then((res) => {
       if (res.code === 200) {
         message.success("注册成功")
+        router.push({ path: '/login' })
       }else {
         message.error(res.message)
       }
@@ -70,7 +72,7 @@ const handleRegister = async () => {
     console.log('表单校验失败:', err)
   }
 }
-const handelRegister = () => {
+const toLogin = () => {
   router.push({ path: '/login' })
 }
 </script>
