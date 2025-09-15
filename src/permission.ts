@@ -3,7 +3,7 @@ import { useUserStore } from '@/store/user'
 import checkAccess from '@/access/checkAccess'
 import { ACCESS_ENUM } from '@/access/accessEnum'
 let firstFetchLoginUser = true
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
   const userStore = useUserStore();
   if (firstFetchLoginUser) {
     await userStore.fetchLoginUser();

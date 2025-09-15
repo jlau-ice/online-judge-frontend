@@ -12,7 +12,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     name: 'noAccess',
     path: '/noAccess',
-    component: () => import('@/views/result/PermissionDenied.vue'),
+    component: () => import('@/views/result/403.vue'),
   },
   {
     name: 'notFound',

@@ -5,9 +5,11 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [vue(), vueDevTools()],
   server: {
+    host: true,
+    port: 8888,
     proxy: {
-      '/api' : 'http://localhost:8101'
-    }
+      '/api': 'http://localhost:8101',
+    },
   },
   resolve: {
     alias: {

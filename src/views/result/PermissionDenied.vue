@@ -1,5 +1,11 @@
 <template>
-  <a-result :status="null" title="This is title content" subtitle="This is subtitle content">
+  <a-result :status="null">
+    <template #title>
+      权限不足
+    </template>
+    <template #subtitle>
+      <a-text>Please check your permission</a-text>
+    </template>
     <template #icon>
       <IconFaceSmileFill />
     </template>
