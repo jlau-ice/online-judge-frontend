@@ -13,12 +13,12 @@
       <a-dropdown trigger="hover">
         <div class="mr-[24px] flex items-center gap-[10px] cursor-pointer select-none">
           <a-avatar>
-            <img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" />
+            <img width="40" height="40" alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" />
           </a-avatar>
-          <span>{{ userStore?.loginUser?.userName }}</span>
+          <span class="max-w-[60px] truncate text-[#3d3d3d]">{{ userStore?.loginUser?.userName }}</span>
         </div>
         <template #content>
-          <a-doption @click="logout">退出登录</a-doption>
+          <a-doption @click="logout">{{ userStore?.loginUser?.userRole === ACCESS_ENUM.NO_LOGIN ? '去登录' : '退出登录' }}</a-doption>
         </template>
       </a-dropdown>
     </div>
@@ -29,6 +29,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import checkAccess from '@/access/checkAccess'
 import { Modal, Message } from '@arco-design/web-vue'
+import { ACCESS_ENUM } from '@/access/accessEnum'
 const userStore = useUserStore()
 const router = useRouter()
 const route = useRoute()
@@ -46,6 +47,10 @@ const filterMenu = computed(() => {
 })
 
 const logout = () => {
+  if (userStore.loginUser.userRole === ACCESS_ENUM.NO_LOGIN) {
+    router.push({ path: '/login' })
+    return
+  }
   Modal.confirm({
     title: '提示',
     content: '确定退出系统吗？',
