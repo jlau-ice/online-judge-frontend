@@ -59,7 +59,7 @@ const handleLogin = async () => {
     if (res.code === 200) {
       message.success('登录成功')
       await userStore.fetchLoginUser()
-      await router.push({ path: '/home' })
+      await router.push({ path: '/question/list' })
     } else {
       message.error(res.message)
     }
